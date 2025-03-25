@@ -4,7 +4,7 @@
 DOTFILES_DIR=~/dotfiles
 BACKUP_DIR=~/dotfiles_backup
 
-echo "Setting up .bashrc from $DOTFILES_DIR..."
+echo "Setting up .bashrc and git-completion.bash from $DOTFILES_DIR..."
 
 # Create a backup directory if it doesn't exist
 mkdir -p $BACKUP_DIR
@@ -25,4 +25,14 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-echo "Bashrc setup complete!"
+# Check if an existing git-completion.bash file exists in the home directory
+if [ -f ~/git-completion.bash ]; then
+    echo "Backing up existing git-completion.bash to $BACKUP_DIR/git-completion.bash_backup"
+    mv ~/git-completion.bash $BACKUP_DIR/git-completion.bash_backup
+fi
+
+# Create a symlink to the git-completion.bash in the dotfiles directory
+ln -s $DOTFILES_DIR/git-completion.bash ~/git-completion.bash
+echo "Symlink created: ~/git-completion.bash -> $DOTFILES_DIR/git-completion.bash"
+
+echo "Dotfiles setup complete!"
