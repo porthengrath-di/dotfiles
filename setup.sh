@@ -6,6 +6,9 @@ BACKUP_DIR=~/dotfiles_backup
 
 echo "Setting up .bashrc and git-completion.bash from $DOTFILES_DIR..."
 
+# create a dotfile directory if it doesn't exist
+mkdir -p $DOTFILES_DIR
+
 # Create a backup directory if it doesn't exist
 mkdir -p $BACKUP_DIR
 
