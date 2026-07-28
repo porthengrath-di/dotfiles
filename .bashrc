@@ -122,6 +122,6 @@ fi
 # Git branch in prompt.
 get_git_branch() {
   git branch 2>/dev/null | sed -n 's/* \(.*\)/\1/p'
-}
+}g
 
-export PS1='\[\e[01;32m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w\[\e[00m\] \[\e[33m\]($(get_git_branch))\[\e[00m\]\$ '
+export PS1='\[\e[01;32m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w\[\e[00m\] \[\e[33m\]($(get_git_branch))\[\e[00m\]\n\$ '
